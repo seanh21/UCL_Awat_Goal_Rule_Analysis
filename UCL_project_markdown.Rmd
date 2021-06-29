@@ -1,0 +1,104 @@
+---
+title: "UCL policy project markdown"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+library(ggplot2)
+summarized_ecl_data <- read.csv("summarized_ecl_data.csv")
+
+h_a_goals_comp <- as.data.frame(t(summarized_ecl_data[, c("Total.Home.goals", "Total.Away.goals")]))
+h_a_goals_comp$goals <- row.names(h_a_goals_comp)
+
+leg_goals_comp <- as.data.frame(t(summarized_ecl_data[, c("Total.1st.leg.goals", "Total.2nd.leg.goals")]))
+leg_goals_comp$goals <- row.names(leg_goals_comp)
+
+f_leg_home_wins <- as.data.frame(t(summarized_ecl_data[, c("X1st.leg.home.wins", "X1st.leg.home.loses")]))
+f_leg_home_wins$wins <- row.names(f_leg_home_wins)
+
+s_leg_home_wins <- as.data.frame(t(summarized_ecl_data[, c("X2nd.leg.home.wins", "X2nd.leg.home.loses")]))
+s_leg_home_wins$wins <- row.names(s_leg_home_wins)
+
+e_p_wins <- as.data.frame(t(summarized_ecl_data[, c("Extratime.and.penalties.wins", "Extratime.and.penalties.loses")]))
+e_p_wins$wins <- row.names(e_p_wins)
+
+a_g_wins <- as.data.frame(t(summarized_ecl_data[, c("Away.goals.wins", "Away.goals.loses")]))
+a_g_wins$wins <- row.names(a_g_wins)
+```
+
+
+## Motivation and Problems to be solved
+
+I am an avid football fan. I support Real Madrid and the most prestegious competition in the UEFA Champions League for clubs. Recently, they proposed an idea to change the away rule goal in extra time for Knockout stage matches. This rule always intrigued me and I want to know if its implementation had the desired outcome. The outcome was supposed to be based on fairness where the home side had the advantage because of home fans and familarity to the pitch, and to eliminate that the away team goals are worth more when the scores are level.
+
+## Hypothesis
+The team that plays away last has the advantage since more goals tend to be scored in this match and the away goals are worth more. This leads to disproportionate amount of teams quantifying to the next round that played the away game last.
+
+## Cleaning
+
+1. The files of the individual UCL seasons were name the same, "champs.csv", and stored in a separate folders defined by the year of that season. So to avoid conflicts when calling files, the csv file contain in each folder was renamed by combining it's original name with that of the folder it is contained in using python to automate the process.
+2. Some files had extra columns that weren't relevant to analyst so they were removed and a new data frame created using python.
+3. Each of these files that stored a single season was aggregated into one master sheet using python for analyst.
+4. The master sheet was filter for specific information either using python or Microsoft Excel.
+5. The data was scrubbed and any abnormal data was either verified and changed or removed.
+
+## Results
+From the graph below, we observe that the home team significantly outscores the away team. The ratio of home goals to away goals was found to be 7:4, which suggests the homes team has a substantial advantage.
+
+```{r}
+library(ggplot2)
+ggplot(data=h_a_goals_comp, aes(x=goals , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Goals")
+```
+
+
+As observed in the graph below, the amount of goals scored in the first leg and the second leg were 5947 and 6361 respectively. As a percentage, 51.68% of the goals were scored in the second leg. The p-value was calculated to be 1.43% and with a confidence level set at 95%, the null hypothesis that the amount of goals scored between the first and second leg would be equal was rejected. The reason for this difference could be the fact that in the second leg, the tie is decided and gives sides the incentive to score.
+
+```{r}
+ggplot(data=leg_goals_comp, aes(x=goals , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Goals")
+```
+
+The data also show teams that play away first won more games at home than the team than played home first as shown in the graphs below. It can be seen that they won more away games as well. This leads to the argument that the home side advantage due to fan support plays a bigger part in the second leg than the first leg generally by showing more support.
+
+```{r}
+ggplot(data=f_leg_home_wins, aes(x=wins , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Wins")
+
+ggplot(data=s_leg_home_wins, aes(x=wins , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Wins")
+```
+
+
+The subset of results where extra-time and penalties were needed to settle the tie, on 35 occasions the team that played home first won and 63 occasions the team that played away first won following the general trend.
+
+```{r}
+ggplot(data=e_p_wins, aes(x=wins , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Wins")
+```
+
+
+When the aggregate scores are even, and the away goal rule decides the out come. On 80 occasions the team that played home first won and 78 occasions the team that played away first won. This was contrary to the general trend where the teams that plays away first win more. In this subset however, the team that played home first won or drew the first match more than 90% of the time. This means that a tie decided on away goals favored conditions where the home team didn't lose and came into the 2nd leg with an advantage or small disadvantage. When the factor in that marginally more goals are scored in the second leg, the team that played home first would likely score more away goals than the other side since scores would be even at the end of the tie.
+
+```{r}
+ggplot(data=a_g_wins, aes(x=wins , y=V1)) +
+  geom_bar(stat="identity") +
+  xlab("") + ylab("No. of Wins")
+```
+
+
+## Conslusion and Insights
+The three main advantages a team could have in this format is a tactical advantage, away goal advantage and the home advantage. The tactical advantage is what separates team from each other and should be the sole merit of the team that allows them to win. This is why the away goal rule was implemented to hypothetically eliminate this advantage. however, it is shown through the data that the home advantage is generally more significant due to the home side fans. Therefore, the away goals rule has not been effect in it's implementation to reduce this advantage. UEFA has removed this from the 2021/22 season going forward. The problem with the advantage the fans give is that it's dependent on other factors but the one that dominates the 2 leg tie is the result of the 1st leg result. If their team loses, the can create and atmosphere that's intimidating to the opposition and gives the home team the edge. This can be seen in recent games such as PSG vs Barcelona in 2017, Barcelona vs Roma in 2018, Barcelona vs Liverpool in 2019 or Atletico Madrid vs Juventus in 2019. Since the tie is decided in the 2nd leg, this gives the home crowd the advantage to influence the game even more which, to me, is the reason why the team that plays home in the second leg ends up winning the ties more often than not.
+
+## Solutions
+As stated before, UEFA decided to eliminate the away goals rule which may skew the results even more but the beauty of this action is that it should gives the fans more incentive to show support. This empowers the fans more than ever which is what professional football should be about.
+
+## Limitation and Possible Errors
+I don't know the procedure for choosing which team plays home first by UEFA which may affect the results or be a reason to the outcomes observed. This is also a high level analysts and much more insights could be achieved with deep analysts into the data.

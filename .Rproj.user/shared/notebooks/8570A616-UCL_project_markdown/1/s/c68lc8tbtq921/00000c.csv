@@ -1,0 +1,4 @@
+"0",""
+"0","ggplot(data=s_leg_home_wins, aes(x=wins , y=V1)) +"
+"0","  geom_bar(stat=""identity"") +"
+"0","  xlab("""") + ylab(""No. of Wins"")"

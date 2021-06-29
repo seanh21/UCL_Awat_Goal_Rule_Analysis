@@ -1,0 +1,4 @@
+"0","library(ggplot2)"
+"0","ggplot(data=h_a_goals_comp, aes(x=goals , y=V1)) +"
+"0","  geom_bar(stat=""identity"") +"
+"0","  xlab("""") + ylab(""No. of Goals"")"

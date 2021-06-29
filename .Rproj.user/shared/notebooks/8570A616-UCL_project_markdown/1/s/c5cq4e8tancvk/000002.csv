@@ -1,0 +1,3 @@
+"0","ggplot(data=leg_goals_comp, aes(x=goals , y=V1)) +"
+"0","  geom_bar(stat=""identity"") +"
+"0","  xlab("""") + ylab(""No. of Goals"")"

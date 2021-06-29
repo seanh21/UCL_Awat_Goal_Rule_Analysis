@@ -1,0 +1,327 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={UCL policy project markdown},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{UCL policy project markdown}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{summarized\_ecl\_data }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"summarized\_ecl\_data.csv"}\NormalTok{)}
+
+\NormalTok{h\_a\_goals\_comp }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Total.Home.goals"}\NormalTok{, }\StringTok{"Total.Away.goals"}\NormalTok{)]))}
+\NormalTok{h\_a\_goals\_comp}\SpecialCharTok{$}\NormalTok{goals }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(h\_a\_goals\_comp)}
+
+\NormalTok{leg\_goals\_comp }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Total.1st.leg.goals"}\NormalTok{, }\StringTok{"Total.2nd.leg.goals"}\NormalTok{)]))}
+\NormalTok{leg\_goals\_comp}\SpecialCharTok{$}\NormalTok{goals }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(leg\_goals\_comp)}
+
+\NormalTok{f\_leg\_home\_wins }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"X1st.leg.home.wins"}\NormalTok{, }\StringTok{"X1st.leg.home.loses"}\NormalTok{)]))}
+\NormalTok{f\_leg\_home\_wins}\SpecialCharTok{$}\NormalTok{wins }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(f\_leg\_home\_wins)}
+
+\NormalTok{s\_leg\_home\_wins }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"X2nd.leg.home.wins"}\NormalTok{, }\StringTok{"X2nd.leg.home.loses"}\NormalTok{)]))}
+\NormalTok{s\_leg\_home\_wins}\SpecialCharTok{$}\NormalTok{wins }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(s\_leg\_home\_wins)}
+
+\NormalTok{e\_p\_wins }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Extratime.and.penalties.wins"}\NormalTok{, }\StringTok{"Extratime.and.penalties.loses"}\NormalTok{)]))}
+\NormalTok{e\_p\_wins}\SpecialCharTok{$}\NormalTok{wins }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(e\_p\_wins)}
+
+\NormalTok{a\_g\_wins }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{t}\NormalTok{(summarized\_ecl\_data[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Away.goals.wins"}\NormalTok{, }\StringTok{"Away.goals.loses"}\NormalTok{)]))}
+\NormalTok{a\_g\_wins}\SpecialCharTok{$}\NormalTok{wins }\OtherTok{\textless{}{-}} \FunctionTok{row.names}\NormalTok{(a\_g\_wins)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{motivation-and-problems-to-be-solved}{%
+\subsection{Motivation and Problems to be
+solved}\label{motivation-and-problems-to-be-solved}}
+
+I am an avid football fan. I support Real Madrid and the most
+prestegious competition in the UEFA Champions League for clubs.
+Recently, they proposed an idea to change the away rule goal in extra
+time for Knockout stage matches. This rule always intrigued me and I
+want to know if its implementation had the desired outcome. The outcome
+was supposed to be based on fairness where the home side had the
+advantage because of home fans and familarity to the pitch, and to
+eliminate that the away team goals are worth more when the scores are
+level.
+
+\hypertarget{hypothesis}{%
+\subsection{Hypothesis}\label{hypothesis}}
+
+The team that plays away last has the advantage since more goals tend to
+be scored in this match and the away goals are worth more. This leads to
+disproportionate amount of teams quantifying to the next round that
+played the away game last.
+
+\hypertarget{cleaning}{%
+\subsection{Cleaning}\label{cleaning}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  The files of the individual UCL seasons were name the same,
+  ``champs.csv'', and stored in a separate folders defined by the year
+  of that season. So to avoid conflicts when calling files, the csv file
+  contain in each folder was renamed by combining it's original name
+  with that of the folder it is contained in using python to automate
+  the process.
+\item
+  Some files had extra columns that weren't relevant to analyst so they
+  were removed and a new data frame created using python.
+\item
+  Each of these files that stored a single season was aggregated into
+  one master sheet using python for analyst.
+\item
+  The master sheet was filter for specific information either using
+  python or Microsoft Excel.
+\item
+  The data was scrubbed and any abnormal data was either verified and
+  changed or removed.
+\end{enumerate}
+
+\hypertarget{results}{%
+\subsection{Results}\label{results}}
+
+From the graph below, we observe that the home team significantly
+outscores the away team. The ratio of home goals to away goals was found
+to be 7:4, which suggests the homes team has a substantial advantage.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{h\_a\_goals\_comp, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{goals , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Goals"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-2-1.pdf}
+
+As observed in the graph below, the amount of goals scored in the first
+leg and the second leg were 5947 and 6361 respectively. As a percentage,
+51.68\% of the goals were scored in the second leg. The p-value was
+calculated to be 1.43\% and with a confidence level set at 95\%, the
+null hypothesis that the amount of goals scored between the first and
+second leg would be equal was rejected. The reason for this difference
+could be the fact that in the second leg, the tie is decided and gives
+sides the incentive to score.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{leg\_goals\_comp, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{goals , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Goals"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+The data also show teams that play away first won more games at home
+than the team than played home first as shown in the graphs below. It
+can be seen that they won more away games as well. This leads to the
+argument that the home side advantage due to fan support plays a bigger
+part in the second leg than the first leg generally by showing more
+support.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{f\_leg\_home\_wins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wins , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Wins"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{s\_leg\_home\_wins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wins , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Wins"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-4-2.pdf}
+
+The subset of results where extra-time and penalties were needed to
+settle the tie, on 35 occasions the team that played home first won and
+63 occasions the team that played away first won following the general
+trend.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{e\_p\_wins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wins , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Wins"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+When the aggregate scores are even, and the away goal rule decides the
+out come. On 80 occasions the team that played home first won and 78
+occasions the team that played away first won. This was contrary to the
+general trend where the teams that plays away first win more. In this
+subset however, the team that played home first won or drew the first
+match more than 90\% of the time. This means that a tie decided on away
+goals favored conditions where the home team didn't lose and came into
+the 2nd leg with an advantage or small disadvantage. When the factor in
+that marginally more goals are scored in the second leg, the team that
+played home first would likely score more away goals than the other side
+since scores would be even at the end of the tie.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data=}\NormalTok{a\_g\_wins, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{wins , }\AttributeTok{y=}\NormalTok{V1)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat=}\StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{""}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{"No. of Wins"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{UCL_project_markdown_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{conslusion-and-insights}{%
+\subsection{Conslusion and Insights}\label{conslusion-and-insights}}
+
+The three main advantages a team could have in this format is a tactical
+advantage, away goal advantage and the home advantage. The tactical
+advantage is what separates team from each other and should be the sole
+merit of the team that allows them to win. This is why the away goal
+rule was implemented to hypothetically eliminate this advantage.
+however, it is shown through the data that the home advantage is
+generally more significant due to the home side fans. Therefore, the
+away goals rule has not been effect in it's implementation to reduce
+this advantage. UEFA has removed this from the 2021/22 season going
+forward. The problem with the advantage the fans give is that it's
+dependent on other factors but the one that dominates the 2 leg tie is
+the result of the 1st leg result. If their team loses, the can create
+and atmosphere that's intimidating to the opposition and gives the home
+team the edge. This can be seen in recent games such as PSG vs Barcelona
+in 2017, Barcelona vs Roma in 2018, Barcelona vs Liverpool in 2019 or
+Atletico Madrid vs Juventus in 2019. Since the tie is decided in the 2nd
+leg, this gives the home crowd the advantage to influence the game even
+more which, to me, is the reason why the team that plays home in the
+second leg ends up winning the ties more often than not.
+
+\hypertarget{solutions}{%
+\subsection{Solutions}\label{solutions}}
+
+As stated before, UEFA decided to eliminate the away goals rule which
+may skew the results even more but the beauty of this action is that it
+should gives the fans more incentive to show support. This empowers the
+fans more than ever which is what professional football should be about.
+
+\hypertarget{limitation-and-possible-errors}{%
+\subsection{Limitation and Possible
+Errors}\label{limitation-and-possible-errors}}
+
+I don't know the procedure for choosing which team plays home first by
+UEFA which may affect the results or be a reason to the outcomes
+observed. This is also a high level analysts and much more insights
+could be achieved with deep analysts into the data.
+
+\end{document}
